@@ -16,11 +16,15 @@
   top: 0; left: 0; right: 0;
   background: var(--paper);
   z-index: 100;
-  padding: 12px var(--gutter);
+  padding: 6px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--ink);
+  min-height: 44px;
+}
+@media (min-width: 640px) {
+  .topbar { padding: 12px var(--gutter); min-height: 60px; }
 }
 
 .topbar .brand {
@@ -31,8 +35,8 @@
 .topbar .brand-main {
   font-family: 'Bodoni Moda', serif;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-size: 13px;
   color: var(--ink);
 }
 .topbar .brand-main .v { color: var(--vermillion); }
@@ -53,25 +57,22 @@
 .topbar .contact {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 .topbar .contact-tel {
-  font-family: 'Bodoni Moda', serif;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.04em;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: none;
 }
-.topbar .contact-tel::before {
-  content: '📞';
-  font-size: 14px;
-}
-.topbar .contact-tel small { display: none; }
 @media (min-width: 640px) {
-  .topbar .contact-tel::before { display: none; }
+  .topbar .contact-tel {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    font-size: 13px;
+  }
   .topbar .contact-tel small {
     display: block;
     font-family: 'JetBrains Mono', monospace;
@@ -87,21 +88,20 @@
 .topbar .btn-cta {
   background: var(--ink);
   color: var(--paper);
-  padding: 9px 18px;
-  font-size: 12px;
+  padding: 7px 14px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   border: none;
   cursor: pointer;
   transition: background .25s ease;
-  min-height: 38px;
+  min-height: 30px;
   font-family: 'Noto Sans JP', sans-serif;
 }
 .topbar .btn-cta:hover { background: var(--vermillion); }
 @media (min-width: 640px) {
-  .topbar .btn-cta { padding: 10px 22px; font-size: 13px; }
+  .topbar .btn-cta { padding: 10px 22px; font-size: 13px; letter-spacing: 0.1em; min-height: 38px; }
 }
-
 
 /* =====================================================
    2. モバイル下部スティッキーCTAバー
@@ -117,24 +117,25 @@
   grid-template-columns: 1fr 1fr;
   gap: 1px;
   border-top: 1px solid var(--vermillion);
-  box-shadow: 0 -6px 16px -6px rgba(10, 31, 61, 0.3);
+  box-shadow: 0 -4px 12px -4px rgba(10, 31, 61, 0.25);
 }
 .mobile-cta-bar a {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 11px 8px;
+  padding: 8px 8px;
   color: var(--paper);
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  min-height: 64px;
+  letter-spacing: 0.08em;
+  min-height: 46px;
   background: var(--ink);
   transition: background .2s;
   text-align: center;
-  line-height: 1.35;
+  line-height: 1.3;
+  gap: 6px;
 }
 .mobile-cta-bar a:active { background: var(--ink-soft); }
 .mobile-cta-bar a.tel-btn {
@@ -145,23 +146,17 @@
 }
 .mobile-cta-bar a.contact-btn:active { background: var(--vermillion-d); }
 .mobile-cta-bar .icon {
-  font-size: 17px;
-  margin-bottom: 3px;
-  display: block;
+  font-size: 14px;
+  display: inline-block;
+  margin: 0;
 }
 .mobile-cta-bar .latin {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  opacity: 0.6;
-  margin-bottom: 1px;
+  display: none;
 }
 
 @media (min-width: 1024px) {
   .mobile-cta-bar { display: none; }
 }
-
 
 /* =====================================================
    3. フッター（コロフォン風）
