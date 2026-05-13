@@ -7,7 +7,7 @@
    ▼ フォームの送信先メールアドレスは下記 CONTACT_EMAIL を変更
    ===================================================== */
 
-const CONTACT_EMAIL = 'info@chikulabo.jp';
+const CONTACT_EMAIL = '810eigo@gmail.com';
 
 
 /* スクロール演出（reveal + 全 anim-* クラスを検知） */
