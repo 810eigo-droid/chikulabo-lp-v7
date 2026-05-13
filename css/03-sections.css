@@ -2413,3 +2413,189 @@
     display: flex;         /* ← PC（1024px以上）でのみ表示 */
   }
 }
+
+/* =====================================================
+   ★ Section 04 MENU / Section 05 DIFF リッチ化（v5）
+   ───────────────────────────────────────
+   ・診断コースアイコン、人気No.1吹き出し
+   ・STANDARD主役化
+   ・POINTアイコン、巨大番号斜め配置、背景色交互
+   ・MADE IN JAPAN を斜め大型スタンプに
+   ===================================================== */
+
+/* === 04 MENU：診断コースのアイコン === */
+.diag-course .course-icon {
+  width: 64px;
+  height: 64px;
+  display: block;
+  margin: 0 auto 18px;
+  object-fit: contain;
+  border: none !important;
+  background: transparent !important;
+}
+@media (min-width: 640px) {
+  .diag-course .course-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* === 04 MENU：STANDARD 主役化 === */
+.diag-course.featured {
+  position: relative;
+  border: 3px solid var(--vermillion);
+  box-shadow: 6px 6px 0 var(--mustard);
+  z-index: 2;
+}
+@media (min-width: 1024px) {
+  .diag-course.featured {
+    transform: scale(1.04);
+    box-shadow: 8px 8px 0 var(--mustard);
+  }
+}
+
+/* === 04 MENU：「人気No.1」漫画吹き出し === */
+.popular-badge {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  background: var(--mustard);
+  color: var(--ink-deep);
+  padding: 9px 24px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 999px;
+  border: 2.5px solid var(--ink-deep);
+  white-space: nowrap;
+  z-index: 3;
+  box-shadow: 3px 3px 0 var(--ink-deep);
+  letter-spacing: 0.04em;
+}
+/* 三角の吹き出し尻尾 */
+.popular-badge::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 13px solid var(--ink-deep);
+}
+.popular-badge::before {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid var(--mustard);
+  z-index: 1;
+}
+@media (min-width: 640px) {
+  .popular-badge {
+    font-size: 18px;
+    padding: 10px 28px;
+    top: -26px;
+  }
+}
+
+
+/* === 05 DIFF：POINT アイコン === */
+.diff-point .pt-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.diff-point .diff-icon {
+  width: 70px;
+  height: 70px;
+  display: block;
+  object-fit: contain;
+  border: none !important;
+  background: transparent !important;
+  flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .diff-point .pt-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .diff-point .diff-icon {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* === 05 DIFF：巨大番号を斜め配置（交互） === */
+.diff-point:nth-of-type(1) .pt-num {
+  transform: rotate(-6deg);
+  display: inline-block;
+}
+.diff-point:nth-of-type(2) .pt-num {
+  transform: rotate(6deg);
+  display: inline-block;
+}
+.diff-point:nth-of-type(3) .pt-num {
+  transform: rotate(-4deg);
+  display: inline-block;
+}
+
+/* === 05 DIFF：背景色を交互（リッチ化） === */
+.diff-point {
+  padding: 28px 22px !important;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+.diff-point + .diff-point {
+  border-top: none !important;
+}
+.diff-point:nth-of-type(1) {
+  background: var(--paper-warm);
+  border: 2.5px solid var(--ink);
+}
+.diff-point:nth-of-type(2) {
+  background: rgba(242, 182, 50, 0.18);
+  border: 2.5px solid var(--ink);
+}
+.diff-point:nth-of-type(3) {
+  background: var(--paper-light);
+  border: 2.5px solid var(--ink);
+}
+@media (min-width: 640px) {
+  .diff-point {
+    padding: 36px 32px !important;
+  }
+}
+
+
+/* === 05 DIFF：MADE IN JAPAN を斜め大型スタンプ化 === */
+.made-in-jp .badge {
+  transform: rotate(-12deg);
+  box-shadow: 6px 6px 0 var(--mustard);
+  border: 4px solid var(--paper);
+  transition: transform .4s ease;
+}
+@media (min-width: 640px) {
+  .made-in-jp .badge {
+    width: 240px !important;
+    height: 240px !important;
+    transform: rotate(-15deg);
+    box-shadow: 8px 8px 0 var(--mustard);
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .made-in-jp .badge:hover {
+    transform: rotate(-8deg) scale(1.05);
+  }
+}
