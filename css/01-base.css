@@ -13,19 +13,39 @@
    1. CSS変数（カラー & スペーシング）
    ===================================================== */
 :root {
-  /* 3色構成 */
-  --paper:        #F2EDE0;   /* 紙色（クリーム）*/
-  --paper-warm:   #E8DFC9;   /* 紙色（濃いめ） */
-  --paper-light:  #F8F4E8;   /* 紙色（明るめ） */
-  --ink:          #0A1F3D;   /* インディゴ（製図ペン）*/
-  --ink-soft:     #1E3859;   /* インディゴ（やや薄）*/
-  --vermillion:   #D14B3A;   /* 朱色（建築判子）*/
-  --vermillion-d: #A83426;   /* 朱色（深）*/
+  /* ▼ v5 漫画エディトリアル・カラーパレット */
+  --paper:        #F2EDE0;   /* 紙色クリーム（継続）*/
+  --paper-warm:   #E8DFC9;
+  --paper-light:  #F8F4E8;
 
-  /* テキスト */
-  --text-main:    #0A1F3D;
+  --ink:          #1F3A5F;   /* 紺藍（FV画像に合わせて少し明るく）*/
+  --ink-soft:     #2C4972;
+  --ink-deep:     #0A1F3D;   /* 旧インディゴ（罫線用）*/
+
+  --vermillion:   #8C2A2C;   /* 臙脂（旧朱色から変更：高級感）*/
+  --vermillion-d: #6B1F22;
+
+  --mustard:      #F2B632;   /* 山吹色（NEW：警告・ハイライト）*/
+  --mustard-soft: #F5C861;
+
+  --text-main:    #1F3A5F;
   --text-sub:     #4A5870;
   --text-mute:    #8A93A5;
+
+  --line:         rgba(31, 58, 95, 0.15);
+  --line-mid:     rgba(31, 58, 95, 0.35);
+  --line-strong:  rgba(31, 58, 95, 0.6);
+
+  --container: 1200px;
+  --gutter: 20px;
+  --section-py: 70px;
+}
+@media (min-width: 640px) {
+  :root { --gutter: 36px; --section-py: 100px; }
+}
+@media (min-width: 1024px) {
+  :root { --gutter: 56px; --section-py: 140px; }
+}
 
   /* 線 */
   --line:         rgba(10, 31, 61, 0.12);
@@ -51,7 +71,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+  /* （他のプロパティはそのまま）*/
+}
   background: var(--paper);
   color: var(--text-main);
   line-height: 1.85;
@@ -79,36 +101,34 @@ input, select, textarea { font-size: 16px; }
 
 
 /* =====================================================
-   3. タイポグラフィ（編集者用クラス）
-   ───────────────────────────────────────────
-   ▼ 主要フォント
-   ・ Bodoni Moda  …英文ディスプレイ（雑誌の見出し感）
-   ・ Shippori Mincho B1 …和文ディスプレイ（極太明朝）
-   ・ JetBrains Mono …注釈・寸法（製図風）
-   ・ Cormorant Garamond …英文セリフ italic（添え書き）
-   ・ Noto Sans JP …本文
+   3. タイポグラフィ（v5：漫画エディトリアル）
    ===================================================== */
 .t-display-en {
-  font-family: 'Bodoni Moda', serif;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 0.95;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
 }
 .t-display-jp {
-  font-family: 'Shippori Mincho B1', serif;
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
   line-height: 1.4;
 }
 .t-mono {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 .t-italic {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 500;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.t-pop {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
 }
 
 
