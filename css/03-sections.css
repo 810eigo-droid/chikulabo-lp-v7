@@ -100,8 +100,8 @@
   margin-bottom: 28px;
 }
 .hero-brand .mark {
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
-  font-weight: 800;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
   font-size: 38px;
   letter-spacing: 0.06em;
   color: var(--ink);
@@ -229,9 +229,9 @@
   position: absolute;
   left: 0;
   top: -4px;
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--vermillion);
   line-height: 1;
 }
@@ -750,8 +750,8 @@
   .impact-list { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 .impact-item .impact-num {
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
-  font-weight: 800;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
   font-size: 32px;
   color: var(--vermillion);
   line-height: 1;
@@ -1087,12 +1087,12 @@
 }
 .bcp-callout h3 .latin {
   display: block;
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   font-size: 17px;
   letter-spacing: 0.22em;
   color: var(--vermillion);
   margin-bottom: 6px;
-  font-weight: 700;
+  font-weight: 900;
 }
 .bcp-callout p {
   font-size: 17px;
@@ -1435,9 +1435,9 @@
   line-height: 1.4;
 }
 .plan .plan-price {
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 0.02em;
   margin-bottom: 20px;
 }
@@ -1566,8 +1566,8 @@
   letter-spacing: 0.05em;
 }
 .discount-card .row .val {
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
-  font-weight: 700;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
   color: var(--paper);
   font-size: 18px;
 }
@@ -1631,8 +1631,8 @@
   color: var(--vermillion);
 }
 .discount-table td {
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
-  font-weight: 700;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
   color: var(--paper);
 }
 .discount-table td small {
@@ -1865,11 +1865,11 @@
   transform: rotate(-8deg);
 }
 .made-in-jp .badge .latin {
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   font-size: 16px;
   letter-spacing: 0.25em;
   margin-bottom: 6px;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   opacity: 0.85;
 }
@@ -2025,11 +2025,11 @@
   margin-bottom: 4px;
 }
 .profile-portrait .name-en {
-  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   font-size: 18px;
   letter-spacing: 0.18em;
   color: var(--text-sub);
-  font-weight: 600;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
@@ -2538,18 +2538,7 @@
 }
 
 /* === 05 DIFF：巨大番号を斜め配置（交互） === */
-.diff-point:nth-of-type(1) .pt-num {
-  transform: rotate(-6deg);
-  display: inline-block;
-}
-.diff-point:nth-of-type(2) .pt-num {
-  transform: rotate(6deg);
-  display: inline-block;
-}
-.diff-point:nth-of-type(3) .pt-num {
-  transform: rotate(-4deg);
-  display: inline-block;
-}
+/* 既存の rotate は anim-spin-tilt-* で制御するため削除済 */
 
 /* === 05 DIFF：背景色を交互（リッチ化） === */
 .diff-point {
@@ -2581,21 +2570,19 @@
 
 /* === 05 DIFF：MADE IN JAPAN を斜め大型スタンプ化 === */
 .made-in-jp .badge {
-  transform: rotate(-12deg);
   box-shadow: 6px 6px 0 var(--mustard);
   border: 4px solid var(--paper);
-  transition: transform .4s ease;
 }
 @media (min-width: 640px) {
   .made-in-jp .badge {
     width: 240px !important;
     height: 240px !important;
-    transform: rotate(-15deg);
     box-shadow: 8px 8px 0 var(--mustard);
   }
 }
 @media (min-width: 1024px) and (hover: hover) {
-  .made-in-jp .badge:hover {
-    transform: rotate(-8deg) scale(1.05);
+  .made-in-jp .badge.in:hover {
+    transform: rotate(-8deg) scale(1.05) !important;
+    transition: transform .4s ease !important;
   }
 }

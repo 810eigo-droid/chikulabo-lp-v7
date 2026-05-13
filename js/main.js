@@ -34,6 +34,8 @@ const CONTACT_EMAIL = 'info@chikulabo.jp';
     '.anim-pop', '.anim-spin',
     '.anim-spin-right', '.anim-spin-double',
     '.anim-tilt-in-left', '.anim-tilt-in-right',
+    '.anim-spin-tilt-left', '.anim-spin-tilt-right', '.anim-spin-tilt-double',
+    '.anim-stamp-in',
     '.anim-bounce', '.anim-fade', '.anim-flip'
   ].join(', ');
   

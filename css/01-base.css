@@ -733,3 +733,80 @@ section {
     transition: none !important;
   }
 }
+
+
+
+/* =====================================================
+   18. 斜め着地アニメ（POINT番号・判子用）
+   ───────────────────────────────────────
+   ▼ 通常の anim-spin は最終 rotate(0) だが、これらは
+     斜めに着地して「漫画的な傾き」を維持
+   ===================================================== */
+
+/* POINT 01：左に360度回転 →-6度に着地 */
+.anim-spin-tilt-left {
+  opacity: 0;
+  transform: rotate(-360deg) scale(.4);
+  transition: opacity .55s ease, transform .85s cubic-bezier(.34,1.3,.64,1);
+  will-change: opacity, transform;
+}
+.anim-spin-tilt-left.in {
+  opacity: 1;
+  transform: rotate(-6deg) scale(1);
+}
+
+/* POINT 02：右に360度回転 →+6度に着地 */
+.anim-spin-tilt-right {
+  opacity: 0;
+  transform: rotate(360deg) scale(.4);
+  transition: opacity .55s ease, transform .85s cubic-bezier(.34,1.3,.64,1);
+  will-change: opacity, transform;
+}
+.anim-spin-tilt-right.in {
+  opacity: 1;
+  transform: rotate(6deg) scale(1);
+}
+
+/* POINT 03：左に二回転 →-4度に着地 */
+.anim-spin-tilt-double {
+  opacity: 0;
+  transform: rotate(-720deg) scale(.3);
+  transition: opacity .65s ease, transform 1.1s cubic-bezier(.34,1.2,.64,1);
+  will-change: opacity, transform;
+}
+.anim-spin-tilt-double.in {
+  opacity: 1;
+  transform: rotate(-4deg) scale(1);
+}
+
+/* MADE IN JAPAN：大胆な判子押し */
+.anim-stamp-in {
+  opacity: 0;
+  transform: rotate(-360deg) scale(.2);
+  transition: opacity .7s ease, transform 1.2s cubic-bezier(.34,1.3,.64,1);
+  will-change: opacity, transform;
+}
+.anim-stamp-in.in {
+  opacity: 1;
+  transform: rotate(-12deg) scale(1);
+}
+@media (min-width: 640px) {
+  .anim-stamp-in.in {
+    transform: rotate(-15deg) scale(1);
+  }
+}
+
+/* prefers-reduced-motion 対応：斜めだけ維持して動きなし */
+@media (prefers-reduced-motion: reduce) {
+  .anim-spin-tilt-left,
+  .anim-spin-tilt-right,
+  .anim-spin-tilt-double,
+  .anim-stamp-in {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .anim-spin-tilt-left  { transform: rotate(-6deg) !important; }
+  .anim-spin-tilt-right { transform: rotate(6deg) !important; }
+  .anim-spin-tilt-double { transform: rotate(-4deg) !important; }
+  .anim-stamp-in { transform: rotate(-12deg) !important; }
+}
