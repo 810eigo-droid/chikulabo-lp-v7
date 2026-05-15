@@ -3120,42 +3120,47 @@ section,
 
 
 /* =====================================================
-   ★ v7-5 MADE IN JAPAN バッジ 永久回転（2026-05-15）
+   ★ v7-5 MADE IN JAPAN バッジ 文字可読性キープ揺れ（2026-05-15・修正版）
    ───────────────────────────────────────
    ・登場時：既存の anim-stamp-in でクルッと判子押し（1.2秒）
-   ・その後：50秒で1周のゆっくり永久回転
-   ・スマホ（-12deg ベース）/ PC（-15deg ベース）両対応
+   ・その後：左右に揺れる動き（±約20度の範囲で）
+   ・文字「JAPAN」「QUALITY」「日本製」が常に読める範囲
    ===================================================== */
 
-/* 登場演出が終わってから永久回転スタート（1.5秒遅延） */
+/* 登場演出が終わってから揺れる動きスタート（1.5秒遅延） */
 .made-in-jp .badge.anim-stamp-in.in {
-  animation: badgeRotateLoopSp 50s linear 1.5s infinite;
+  animation: badgeSwingSp 6s ease-in-out 1.5s infinite;
 }
 
-@keyframes badgeRotateLoopSp {
-  from { transform: rotate(-12deg) scale(1); }
-  to   { transform: rotate(348deg) scale(1); }
+/* スマホ：基準-12度から±20度で揺れる */
+@keyframes badgeSwingSp {
+  0%, 100% { transform: rotate(-12deg) scale(1); }
+  25%      { transform: rotate(8deg) scale(1); }
+  50%      { transform: rotate(-12deg) scale(1); }
+  75%      { transform: rotate(-32deg) scale(1); }
 }
 
-/* PCサイズ：傾き-15度ベースで回転 */
+/* PCサイズ：基準-15度から±20度で揺れる */
 @media (min-width: 640px) {
   .made-in-jp .badge.anim-stamp-in.in {
-    animation: badgeRotateLoopPc 50s linear 1.5s infinite;
+    animation: badgeSwingPc 6s ease-in-out 1.5s infinite;
   }
-  @keyframes badgeRotateLoopPc {
-    from { transform: rotate(-15deg) scale(1); }
-    to   { transform: rotate(345deg) scale(1); }
+  @keyframes badgeSwingPc {
+    0%, 100% { transform: rotate(-15deg) scale(1); }
+    25%      { transform: rotate(5deg) scale(1); }
+    50%      { transform: rotate(-15deg) scale(1); }
+    75%      { transform: rotate(-35deg) scale(1); }
   }
 }
 
-/* prefers-reduced-motion 対応：OS設定でアニメ控えめの場合は回転無効 */
+/* prefers-reduced-motion 対応：OS設定でアニメ控えめの場合は揺れ無効 */
 @media (prefers-reduced-motion: reduce) {
   .made-in-jp .badge.anim-stamp-in.in {
     animation: none !important;
   }
 }
 
-/* PCホバー時は回転を一時停止（読みやすさのため） */
+/* PCホバー時は揺れを一時停止（読みやすさのため） */
 @media (min-width: 1024px) and (hover: hover) {
   .made-in-jp .badge.anim-stamp-in.in:hover {
     animation-play-state: paused;
@@ -3174,7 +3179,7 @@ section,
 .diff-point h3 em {
   display: inline-block;
   font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 800;
   color: var(--vermillion);
   letter-spacing: -0.02em;
@@ -3187,13 +3192,13 @@ section,
 
 @media (min-width: 640px) {
   .diff-point h3 em {
-    font-size: 88px;
+    font-size: 72px;
   }
 }
 
 @media (min-width: 1024px) {
   .diff-point h3 em {
-    font-size: 110px;
+    font-size: 90px;
   }
 }
 
@@ -3205,3 +3210,452 @@ section,
 
 /* 通常文字（蓄電池の 増設が など）は標準サイズを維持 */
 /* .diff-point h3 自体のサイズは既存のまま（19px / 24px） */
+
+
+/* =====================================================
+   ★ v7-7 BCPパンチライン スマホ引用符かぶり修正（2026-05-15）
+   ───────────────────────────────────────
+   ・スマホで引用符「"」が本文に被るのを解消
+   ・引用符は少し小さく、本文との余白を確保
+   ===================================================== */
+
+@media (max-width: 639px) {
+  .bcp-punch {
+    padding-top: 56px !important;
+  }
+  .bcp-punch::before {
+    font-size: 68px !important;
+    top: -4px !important;
+    left: 14px !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-8 ステップA：電話廃止・スマホ下部バー再構成（2026-05-15）
+   ───────────────────────────────────────
+   ・ヘッダーから電話番号削除（HTMLで対応済み）
+   ・スマホ下部バーを「メール / ZOOM」2ボタンに
+   ===================================================== */
+
+/* スマホ下部バー：mail-btn（左側・既存tel-btnのスタイルを継承） */
+.mobile-cta-bar a.mail-btn {
+  border-right: 1px solid rgba(242, 237, 224, 0.15);
+  background: var(--ink);
+  color: var(--paper);
+}
+.mobile-cta-bar a.mail-btn:active {
+  background: var(--ink-soft);
+}
+
+/* ZOOM面談ボタン（右側・既存 contact-btn スタイル＝赤を維持） */
+/* contact-btn は既存スタイルで vermillion 背景なのでそのまま使える */
+
+
+/* =====================================================
+   ★ v7-9 「０は０」セクション 文字バランス調整（2026-05-15）
+   ───────────────────────────────────────
+   ・「準備」「効果・安心」「リスク・不安」を一回り大きく（17→22px）
+   ・数字「０」「０」「100」を1.5倍（漫画的なインパクト）
+   ・Dela Gothic One で数字をドンッと強調
+   ===================================================== */
+
+/* 日本語ラベル部分（準備 / 効果・安心 / リスク・不安）一回り大きく */
+.zero-labels .lbl .v {
+  font-size: 22px !important;
+  line-height: 1.3 !important;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .zero-labels .lbl .v {
+    font-size: 24px !important;
+  }
+}
+
+/* 数字部分（０ / ０ / 100）を1.5倍＋漫画フォント */
+.zero-labels .lbl .v .num {
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1.6em;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+
+/* RISKラベル（紺背景）の数字は赤で警告感 */
+.zero-labels .lbl.risk .v .num {
+  color: var(--vermillion);
+}
+
+
+/* =====================================================
+   ★ v7-10 微調整パック（2026-05-15）
+   ───────────────────────────────────────
+   ① ヘッダーとFV画像の隙間解消
+   ② DIFF「可能」「簡単」「安心」の文字潰れ修正
+   ===================================================== */
+
+/* ① ヘッダー直下の隙間を消す（FV画像を上端に密着） */
+.hero {
+  padding-top: 0 !important;
+}
+
+/* ② DIFFの巨大文字：Dela Gothic Oneは漢字で潰れるので、
+      Zen Kaku Gothic New weight 900 に変更 + 字間をやや空ける */
+.diff-point h3 em {
+  font-family: 'Zen Kaku Gothic New', sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.1 !important;
+}
+
+
+/* =====================================================
+   ★ v7-11 POINT 2カード 横長リニューアル（2026-05-15）
+   ───────────────────────────────────────
+   ・正方形画像（1254×1254px）を主役に
+   ・カードを横長に・角を斜めカット（漫画的）
+   ・01は画像左/テキスト右、02は画像右/テキスト左（交互）
+   ・スライドイン（01=左から、02=右から）は既存 anim-slide-*
+   ・スマホでは縦並びに自動切替
+   ===================================================== */
+
+/* グリッド：1列に変更（横長カードを縦に2つ並べる） */
+.hero-features {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
+  margin: 40px 0 50px !important;
+}
+@media (min-width: 640px) {
+  .hero-features {
+    gap: 30px !important;
+  }
+}
+
+/* カード本体：横長レイアウト */
+.hero-feature {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  background: var(--paper-light) !important;
+  border: 2.5px solid var(--ink) !important;
+  overflow: hidden !important;
+  position: relative;
+  transition: transform .4s ease, box-shadow .4s ease;
+  
+  /* 漫画的：右上と左下の角を斜めカット */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 28px) 0,
+    100% 28px,
+    100% 100%,
+    28px 100%,
+    0 calc(100% - 28px)
+  );
+}
+
+@media (min-width: 640px) {
+  .hero-feature {
+    grid-template-columns: 1fr 1fr !important; /* 画像とテキスト 1:1 */
+  }
+  /* 02 カードは画像と内容を逆順に（交互配置） */
+  .hero-feature.feature-02 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .hero-feature.feature-02 .feat-image {
+    order: 2;
+  }
+  .hero-feature.feature-02 .feat-content {
+    order: 1;
+  }
+}
+
+/* カードの傾き：漫画雑誌風 */
+.hero-feature.feature-01 {
+  transform-origin: left center;
+}
+.hero-feature.feature-02 {
+  transform-origin: right center;
+}
+@media (min-width: 1024px) {
+  .hero-feature.feature-01.in {
+    transform: translateX(0) rotate(-0.6deg);
+  }
+  .hero-feature.feature-02.in {
+    transform: translateX(0) rotate(0.6deg);
+  }
+  .hero-feature.feature-01:hover {
+    transform: translateX(0) rotate(0deg) scale(1.01);
+  }
+  .hero-feature.feature-02:hover {
+    transform: translateX(0) rotate(0deg) scale(1.01);
+  }
+}
+
+/* 画像エリア */
+.hero-feature .feat-image {
+  position: relative;
+  background: var(--paper-warm);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+@media (min-width: 640px) {
+  .hero-feature .feat-image {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+}
+
+.hero-feature .feat-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .hero-feature:hover .feat-photo {
+    transform: scale(1.03);
+  }
+}
+
+/* テキストエリア */
+.hero-feature .feat-content {
+  padding: 24px 22px 28px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 640px) {
+  .hero-feature .feat-content {
+    padding: 36px 32px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-feature .feat-content {
+    padding: 48px 44px !important;
+  }
+}
+
+/* feat-head：番号とラベルを横並び */
+.hero-feature .feat-head {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-bottom: 14px !important;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 12px;
+}
+
+/* 番号「01」「02」：巨大・赤 */
+.hero-feature .feat-num {
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 56px !important;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--vermillion);
+  line-height: 0.85 !important;
+  margin-bottom: 0 !important;
+  flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .hero-feature .feat-num {
+    font-size: 72px !important;
+  }
+}
+
+/* POINT ラベル（SPEED/COVERAGE） */
+.hero-feature .feat-label {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px !important;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+  font-weight: 700;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-transform: uppercase;
+  flex: 1;
+  line-height: 1.4;
+}
+@media (min-width: 640px) {
+  .hero-feature .feat-label {
+    font-size: 16px !important;
+  }
+}
+
+/* タイトル「簡単・スピーディな実装」「幅広い対応範囲」 */
+.hero-feature h3 {
+  margin-top: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+/* 説明文 */
+.hero-feature p {
+  font-size: 16px !important;
+  line-height: 1.85 !important;
+  color: var(--text-sub) !important;
+}
+@media (min-width: 640px) {
+  .hero-feature p {
+    font-size: 17px !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-12 FAMILY BANNER 装飾帯（2026-05-15）
+   ───────────────────────────────────────
+   ・BCP（03）と MENU（04）の間に配置
+   ・1448×1086 の横長画像（family-banner.webp）
+   ・スクロールで下からポップアップ風登場
+   ・漫画的な装飾（コーナーマーカー）も少し添える
+   ===================================================== */
+
+.family-banner-sec {
+  padding: 30px 0 !important;
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 640px) {
+  .family-banner-sec {
+    padding: 50px 0 !important;
+  }
+}
+@media (min-width: 1024px) {
+  .family-banner-sec {
+    padding: 70px 0 !important;
+  }
+}
+
+/* バナー本体：浮き上がる感のあるカード */
+.family-banner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 3px solid var(--ink);
+  background: var(--paper-light);
+  box-shadow: 8px 8px 0 var(--mustard);
+  overflow: hidden;
+  
+  /* ポップアップ演出：初期状態は下に隠れて透明 */
+  opacity: 0;
+  transform: translateY(60px) scale(0.92);
+  transition:
+    opacity 0.7s cubic-bezier(.22, 1, .36, 1),
+    transform 0.9s cubic-bezier(.34, 1.4, .64, 1);
+  will-change: opacity, transform;
+}
+
+/* スクロールで in クラスが付くと、上からポップアップ */
+.family-banner.in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (min-width: 640px) {
+  .family-banner {
+    box-shadow: 12px 12px 0 var(--mustard);
+  }
+}
+
+/* 漫画的なコーナー装飾（四隅に+マーク） */
+.family-banner::before {
+  content: '+';
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  color: var(--vermillion);
+  font-size: 22px;
+  font-weight: 800;
+  z-index: 2;
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+}
+.family-banner::after {
+  content: '+';
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  color: var(--vermillion);
+  font-size: 22px;
+  font-weight: 800;
+  z-index: 2;
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+}
+
+/* バナー画像 */
+.family-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1448 / 1086;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* PCホバー時：画像が微妙にズーム */
+@media (min-width: 1024px) and (hover: hover) {
+  .family-banner:hover .family-banner-img {
+    transform: scale(1.02);
+  }
+}
+
+/* prefers-reduced-motion 対応 */
+@media (prefers-reduced-motion: reduce) {
+  .family-banner {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-13 CONTACT 2カード化対応（2026-05-15）
+   ───────────────────────────────────────
+   ・電話廃止に伴い、3カラム → 2カラムレイアウトに
+   ・既存の grid-template-columns: repeat(3, 1fr) を上書き
+   ===================================================== */
+
+@media (min-width: 640px) {
+  .contact-methods {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* スマホでは縦並びのまま（変更不要） */
+
+
+/* =====================================================
+   ★ v7-14 DIFF 番号と本文の被り解消（2026-05-15）
+   ───────────────────────────────────────
+   ・PCで「02」「03」が本文に被って見える問題を解消
+   ・左カラム幅を 120→160px に拡大
+   ・番号サイズを 92→76px に微調整
+   ・カラム間隔を 32→40px に拡大
+   ===================================================== */
+
+@media (min-width: 640px) {
+  .diff-point {
+    grid-template-columns: 160px 1fr !important;
+    gap: 40px !important;
+  }
+  .diff-point .pt-num {
+    font-size: 76px !important;
+  }
+}
+
+/* 番号と本文を物理的に分離するため、本文側にも左マージン保険 */
+@media (min-width: 640px) {
+  .diff-point > div:not(.pt-head) {
+    padding-left: 4px;
+  }
+}
