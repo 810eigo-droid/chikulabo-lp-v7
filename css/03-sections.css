@@ -323,7 +323,7 @@
 /* タイトル */
 .hero-feature h3 {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 18px;
+  font-size: 27px;
   font-weight: 800;
   color: var(--ink);
   margin-bottom: 10px;
@@ -331,7 +331,7 @@
   letter-spacing: 0.02em;
 }
 @media (min-width: 640px) {
-  .hero-feature h3 { font-size: 20px; }
+  .hero-feature h3 { font-size: 30px; }
 }
 
 /* 説明文 */
@@ -2737,3 +2737,471 @@ section,
 #contact-options {
   scroll-margin-top: 40px;
 }
+
+
+/* =====================================================
+   ★ v7 クライアント修正パック（2026-05-15）
+   ───────────────────────────────────────
+   ① POINT「簡単スピーディな実装」「幅広い対応範囲」1.5倍 ※既に反映済
+   ② TARGET「私のところは大丈夫?」+ 4ケース文字大きく
+   ③ RISKS「今の時代」+「停電影響」+「i.ii.」文字大きく
+   ④ 0=0 → 0⇒0（矢印を白に・HTMLも編集要）
+   ⑤ MENU 金額を小さく目立たないように
+   ===================================================== */
+
+
+/* === ② TARGET セクション === */
+
+/* 「私のところは大丈夫?」を大きく */
+.target-question {
+  font-size: 36px !important;
+}
+@media (min-width: 640px) {
+  .target-question {
+    font-size: 50px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .target-question {
+    font-size: 64px !important;
+  }
+}
+
+/* 4ケース（設備/高齢者/ペット/住宅併用）のタイトルと本文を大きく */
+.target-card h3 {
+  font-size: 21px !important;
+  line-height: 1.55 !important;
+}
+.target-card p {
+  font-size: 18px !important;
+  line-height: 1.85 !important;
+}
+@media (min-width: 640px) {
+  .target-card h3 {
+    font-size: 22px !important;
+  }
+  .target-card p {
+    font-size: 19px !important;
+  }
+}
+
+
+/* === ③ RISKS セクション === */
+
+/* 「今の時代」見出し（risks-headline）を大きく */
+.risks-headline {
+  font-size: 32px !important;
+}
+@media (min-width: 640px) {
+  .risks-headline {
+    font-size: 44px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .risks-headline {
+    font-size: 58px !important;
+  }
+}
+
+/* リスク3枚カードのタイトル・本文も合わせて大きく */
+.risk-card h4 {
+  font-size: 22px !important;
+  line-height: 1.5 !important;
+}
+.risk-card p {
+  font-size: 18px !important;
+  line-height: 1.9 !important;
+}
+
+/* 「停電が引き起こす、主な影響」見出し */
+.impact-row h3 {
+  font-size: 28px !important;
+}
+@media (min-width: 640px) {
+  .impact-row h3 {
+    font-size: 36px !important;
+  }
+}
+
+/* 「i. 通信・データの遮断」「ii. 労働・生活環境の著しい低下」 */
+.impact-item h4 {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+}
+.impact-item p {
+  font-size: 18px !important;
+  line-height: 1.85 !important;
+}
+
+
+/* === ④ 0=0 → 0⇒0 矢印を白に === */
+/* ※ HTML 側で「＝」を「⇒」に書き換える必要があります（別途実施済） */
+.zero-eq {
+  color: var(--paper) !important;
+  font-weight: 700 !important;
+}
+
+
+/* === ⑤ MENU 金額を小さく目立たないように === */
+.diag-course .price {
+  font-size: 36px !important;
+  opacity: 0.55 !important;
+}
+.diag-course .price .unit {
+  font-size: 14px !important;
+}
+.diag-course .price-sub {
+  font-size: 12px !important;
+  opacity: 0.6 !important;
+}
+@media (min-width: 640px) {
+  .diag-course .price {
+    font-size: 42px !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-2 診断コース3枚 大幅リニューアル（2026-05-15）
+   ───────────────────────────────────────
+   ・「ECO」「STAN」「FULL」を巨大化
+   ・後半「NOMY」「DARD」「-SPEC」は小さめ
+   ・金額を1行表記「10万円（TAX INCLUDED）」
+   ・プラン名（そなえ/まもり/ゆとり）追加・紺藍で
+   ===================================================== */
+
+/* ECONOMY 等のラベル：従来の枠スタイルを解除して巨大化 */
+.diag-course .course-tier {
+  display: block !important;
+  padding: 0 !important;
+  border: none !important;
+  margin: 6px 0 14px !important;
+  letter-spacing: 0 !important;
+  font-family: 'Zen Kaku Gothic New', sans-serif !important;
+  text-align: left !important;
+  line-height: 0.95 !important;
+}
+
+/* 「ECO」「STAN」「FULL」部分：巨大・赤 */
+.diag-course .course-tier .big {
+  display: inline;
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--vermillion);
+  letter-spacing: -0.02em;
+}
+
+/* 後半「NOMY」「DARD」「-SPEC」部分：小さめ・赤 */
+.diag-course .course-tier .small {
+  display: inline;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--vermillion);
+  letter-spacing: 0.04em;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+@media (min-width: 640px) {
+  .diag-course .course-tier .big {
+    font-size: 60px;
+  }
+  .diag-course .course-tier .small {
+    font-size: 22px;
+  }
+}
+
+/* STANDARD（featured）でも赤を維持 */
+.diag-course.featured .course-tier .big,
+.diag-course.featured .course-tier .small {
+  color: var(--vermillion);
+}
+
+/* 旧 .price と .price-sub を非表示（v7-2 で .price-line に置換のため） */
+.diag-course .price,
+.diag-course .price-sub {
+  display: none !important;
+}
+
+/* 新：金額1行表記「10万円（TAX INCLUDED）」 */
+.diag-course .price-line {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-sub);
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  opacity: 0.85;
+}
+.diag-course.featured .price-line {
+  color: rgba(242, 237, 224, 0.75);
+}
+
+/* プラン名（そなえ・まもり・ゆとり）：紺藍で強調 */
+.diag-course h4 .plan-name {
+  display: inline-block;
+  color: var(--ink);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 900;
+  font-size: 1.15em;
+  margin-left: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* STANDARD（featured：紺背景）ではプラン名を山吹色で目立たせる */
+.diag-course.featured h4 .plan-name {
+  color: var(--mustard);
+}
+
+/* 診断名 <h4> 全体のサイズを少し大きく */
+.diag-course h4 {
+  font-size: 19px !important;
+  line-height: 1.6 !important;
+}
+@media (min-width: 640px) {
+  .diag-course h4 {
+    font-size: 20px !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-3 設置プラン3枚 リニューアル（2026-05-15）
+   ───────────────────────────────────────
+   ・「チクラボ」を小さく
+   ・「スタータープラン」等を大きく・紺藍
+   ・価格を「50万〜」等のシンプル表記
+   ===================================================== */
+
+/* プラン名コンテナ全体 */
+.plan .plan-name {
+  display: block;
+  margin: 14px 0 8px !important;
+  font-size: inherit !important;
+  font-weight: 400 !important;
+}
+
+/* 「チクラボ」部分：小さく・控えめ */
+.plan .plan-name .brand {
+  display: inline-block;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mute);
+  letter-spacing: 0.08em;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* プラン名タイトル部分：大きく・紺藍（青文字） */
+.plan .plan-name .plan-title {
+  display: inline-block;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  vertical-align: middle;
+}
+
+@media (min-width: 640px) {
+  .plan .plan-name .brand {
+    font-size: 14px;
+  }
+  .plan .plan-name .plan-title {
+    font-size: 30px;
+  }
+}
+
+/* featured（赤背景）のカードはコントラスト調整 */
+.plan.featured .plan-name .brand {
+  color: rgba(242, 237, 224, 0.7);
+}
+.plan.featured .plan-name .plan-title {
+  color: var(--mustard);
+}
+
+/* 価格表記：シンプルに */
+.plan .plan-price {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 20px !important;
+  color: var(--ink);
+}
+.plan.featured .plan-price {
+  color: var(--paper);
+}
+@media (min-width: 640px) {
+  .plan .plan-price {
+    font-size: 26px !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-4 値引きマトリクス リニューアル（2026-05-15）
+   ───────────────────────────────────────
+   ・「5万値引」「10万値引」を赤文字＋少し大きく
+   ・「0円負担」をさらに大きく強調
+   ・スマホ用カード（.discount-card）+ PC用テーブル（.discount-table）両対応
+   ===================================================== */
+
+/* ===== スマホ用カード ===== */
+
+/* 「値引」表記を赤文字＋少し大きく */
+.discount-card .row .val small {
+  color: var(--vermillion) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* 通常の「○万負担」表記も少し大きく */
+.discount-card .row .val {
+  font-size: 20px !important;
+}
+
+/* 「0円負担」を特に大きく */
+.discount-card .row .val.zero {
+  color: var(--vermillion) !important;
+  font-size: 28px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* ===== PC用テーブル ===== */
+
+/* 「値引」表記を赤文字＋少し大きく */
+.discount-table td small {
+  color: var(--vermillion) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* 通常の「○万負担」表記も少し大きく */
+.discount-table td {
+  font-size: 21px !important;
+}
+
+/* 「0円負担」を特に大きく */
+.discount-table td.zero {
+  color: var(--vermillion) !important;
+  font-size: 30px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* 「0円負担」セル内の small（「10万値引」）も合わせて少し大きく */
+.discount-table td.zero small {
+  color: var(--vermillion) !important;
+  font-size: 14px !important;
+}
+.discount-card .row .val.zero small {
+  color: var(--vermillion) !important;
+  font-size: 15px !important;
+}
+
+@media (min-width: 640px) {
+  .discount-card .row .val.zero {
+    font-size: 32px !important;
+  }
+  .discount-table td.zero {
+    font-size: 34px !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-5 MADE IN JAPAN バッジ 永久回転（2026-05-15）
+   ───────────────────────────────────────
+   ・登場時：既存の anim-stamp-in でクルッと判子押し（1.2秒）
+   ・その後：50秒で1周のゆっくり永久回転
+   ・スマホ（-12deg ベース）/ PC（-15deg ベース）両対応
+   ===================================================== */
+
+/* 登場演出が終わってから永久回転スタート（1.5秒遅延） */
+.made-in-jp .badge.anim-stamp-in.in {
+  animation: badgeRotateLoopSp 50s linear 1.5s infinite;
+}
+
+@keyframes badgeRotateLoopSp {
+  from { transform: rotate(-12deg) scale(1); }
+  to   { transform: rotate(348deg) scale(1); }
+}
+
+/* PCサイズ：傾き-15度ベースで回転 */
+@media (min-width: 640px) {
+  .made-in-jp .badge.anim-stamp-in.in {
+    animation: badgeRotateLoopPc 50s linear 1.5s infinite;
+  }
+  @keyframes badgeRotateLoopPc {
+    from { transform: rotate(-15deg) scale(1); }
+    to   { transform: rotate(345deg) scale(1); }
+  }
+}
+
+/* prefers-reduced-motion 対応：OS設定でアニメ控えめの場合は回転無効 */
+@media (prefers-reduced-motion: reduce) {
+  .made-in-jp .badge.anim-stamp-in.in {
+    animation: none !important;
+  }
+}
+
+/* PCホバー時は回転を一時停止（読みやすさのため） */
+@media (min-width: 1024px) and (hover: hover) {
+  .made-in-jp .badge.anim-stamp-in.in:hover {
+    animation-play-state: paused;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-6 DIFF「可能」「簡単」「安心」巨大化（2026-05-15）
+   ───────────────────────────────────────
+   ・3つの em（可能/簡単/安心）を巨大化
+   ・赤色は維持
+   ・スマホでも大きく、PCではさらに巨大に
+   ===================================================== */
+
+.diff-point h3 em {
+  display: inline-block;
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--vermillion);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  vertical-align: middle;
+  margin: 0 2px;
+  /* 縦の余白を確保（巨大な文字でレイアウトが詰まらないように）*/
+  padding: 4px 0;
+}
+
+@media (min-width: 640px) {
+  .diff-point h3 em {
+    font-size: 88px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .diff-point h3 em {
+    font-size: 110px;
+  }
+}
+
+/* 「。」（句点）はemの外にあるが、emの後ろにバランス調整 */
+.diff-point h3 {
+  display: block;
+  line-height: 1.4;
+}
+
+/* 通常文字（蓄電池の 増設が など）は標準サイズを維持 */
+/* .diff-point h3 自体のサイズは既存のまま（19px / 24px） */
