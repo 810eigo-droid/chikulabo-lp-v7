@@ -3299,9 +3299,15 @@ section,
    ② DIFF「可能」「簡単」「安心」の文字潰れ修正
    ===================================================== */
 
-/* ① ヘッダー直下の隙間を消す（FV画像を上端に密着） */
+/* ① ヘッダー直下の隙間を消す（FV画像を上端に密着）
+   ※ ヘッダー（fixed）の高さ分の余白を確保して、画像が切れないように */
 .hero {
-  padding-top: 0 !important;
+  padding-top: 46px !important; /* スマホヘッダー高さ */
+}
+@media (min-width: 640px) {
+  .hero {
+    padding-top: 64px !important; /* PCヘッダー高さ */
+  }
 }
 
 /* ② DIFFの巨大文字：Dela Gothic Oneは漢字で潰れるので、
@@ -3657,5 +3663,573 @@ section,
 @media (min-width: 640px) {
   .diff-point > div:not(.pt-head) {
     padding-left: 4px;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-15 スマホ下部空白＋値引き改行修正（2026-05-15）
+   ───────────────────────────────────────
+   ② スマホ下部の長い空白を解消
+   ③ 「値引無」「5万値引」「10万値引」の改行を防止
+   ===================================================== */
+
+/* ② body 下部の異常な空白を抑制 */
+html, body {
+  min-height: auto !important;
+}
+body {
+  margin-bottom: 0 !important;
+  padding-bottom: 56px !important; /* mobile-cta-bar の高さ分のみ */
+}
+@media (min-width: 1024px) {
+  body {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* mobile-cta-bar を確実に画面下に固定（万一フローに落ちないように） */
+.mobile-cta-bar {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+@media (min-width: 1024px) {
+  .mobile-cta-bar {
+    display: none !important;
+  }
+}
+
+/* ③ 値引きラベルの改行防止 */
+/* 「診断 エコノミー」等の左ラベルが改行されないように */
+.discount-card .row .label {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-size: 13px !important;
+}
+@media (min-width: 640px) {
+  .discount-card .row .label {
+    font-size: 14px !important;
+  }
+}
+
+/* 「値引無」「5万値引」「10万値引」（赤い注釈）の改行防止 */
+.discount-card .row .val small,
+.discount-table td small {
+  white-space: nowrap !important;
+  display: inline-block !important;
+  margin-left: 4px;
+}
+
+/* val 全体（「10万負担 値引無」など）も改行しない */
+.discount-card .row .val {
+  white-space: nowrap !important;
+  text-align: right;
+}
+
+/* 0円負担セル内の small は別行表示OK（強調のため改行する） */
+.discount-card .row .val.zero {
+  white-space: normal !important;
+}
+.discount-card .row .val.zero small {
+  display: block !important;
+  margin-left: 0 !important;
+  margin-top: 4px;
+}
+
+
+/* =====================================================
+   ★ v7-16 CONTACT FORM 一時非表示（2026-05-15・強化版）
+   ───────────────────────────────────────
+   ・「無料相談」フォームと混同するため、申込みフォームを一時的に隠す
+   ・HTMLは残しているので、display: none を外せば即復活可能
+   ・「お問合せフォーム」関連の見出しも同時に非表示
+   ===================================================== */
+
+#contact-form,
+.contact-form-wrap,
+form#contact-form,
+form.contact-form-wrap {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* フォームの上にあるかもしれない見出し（CONTACT FORM/申込みフォーム）も非表示 */
+.contact-form-heading {
+  display: none !important;
+}
+
+/* CONTACT セクションの padding を控えめに（フォーム非表示後の余白を減らす） */
+.contact-sec {
+  padding-bottom: 40px !important;
+}
+@media (min-width: 640px) {
+  .contact-sec {
+    padding-bottom: 60px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .contact-sec {
+    padding-bottom: 80px !important;
+  }
+}
+
+
+/* =====================================================
+   ★ v7-17 信頼性セクション追加（2026-05-15）
+   ───────────────────────────────────────
+   ・WORKS & VOICE（導入実績・お客様の声）
+   ・AREA（対応エリア）
+   ・フッター対応エリア
+   ===================================================== */
+
+
+/* ===== WORKS & VOICE セクション ===== */
+.works-voice-sec {
+  background: var(--paper-light);
+  padding: 60px 0 80px;
+  position: relative;
+}
+@media (min-width: 640px) {
+  .works-voice-sec {
+    padding: 80px 0 100px;
+  }
+}
+@media (min-width: 1024px) {
+  .works-voice-sec {
+    padding: 100px 0 120px;
+  }
+}
+
+/* セクションヘッダー */
+.wv-header {
+  text-align: left;
+  margin-bottom: 40px;
+  max-width: var(--container);
+  padding: 0 var(--gutter);
+  margin-left: auto;
+  margin-right: auto;
+}
+.wv-header .dim-line {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  color: var(--vermillion);
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.wv-header .num {
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.wv-header .num .v {
+  color: var(--vermillion);
+}
+.wv-header .title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 12px 0 14px;
+}
+.wv-header .title .v {
+  color: var(--vermillion);
+}
+.wv-header .sub {
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 1.85;
+}
+@media (min-width: 640px) {
+  .wv-header .num { font-size: 72px; }
+  .wv-header .title { font-size: 40px; }
+  .wv-header .sub { font-size: 17px; }
+}
+
+/* 2カラムグリッド */
+.wv-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+@media (min-width: 768px) {
+  .wv-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+/* カード */
+.wv-card {
+  background: var(--paper);
+  border: 2.5px solid var(--ink);
+  padding: 32px 24px 28px;
+  position: relative;
+  box-shadow: 6px 6px 0 var(--mustard);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+@media (min-width: 640px) {
+  .wv-card {
+    padding: 40px 32px 36px;
+    box-shadow: 8px 8px 0 var(--mustard);
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .wv-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 var(--mustard);
+  }
+}
+
+.wv-card-label {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--vermillion);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.wv-card-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 12px;
+}
+
+/* プレースホルダー（ダミー枠） */
+.wv-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* WORKS（実績）ダミー */
+.ph-item {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.ph-image {
+  width: 80px;
+  height: 60px;
+  background: var(--paper-warm);
+  border: 1.5px solid var(--text-mute);
+  flex-shrink: 0;
+}
+.ph-text {
+  flex: 1;
+}
+.ph-line {
+  height: 8px;
+  background: var(--text-mute);
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.ph-line.short {
+  width: 60%;
+}
+
+/* VOICE（声）ダミー */
+.ph-quote {
+  padding: 12px 14px;
+  background: var(--paper-warm);
+  border-left: 3px solid var(--vermillion);
+}
+.ph-quote .ph-line {
+  margin-bottom: 8px;
+}
+.ph-author {
+  height: 6px;
+  width: 40%;
+  background: var(--vermillion);
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+/* COMING SOON ラベル */
+.wv-coming {
+  position: absolute;
+  top: 14px;
+  right: -8px;
+  background: var(--vermillion);
+  color: var(--paper);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  padding: 6px 14px;
+  transform: rotate(8deg);
+  box-shadow: 2px 2px 0 rgba(10, 31, 61, 0.2);
+}
+@media (min-width: 640px) {
+  .wv-coming {
+    font-size: 12px;
+    padding: 8px 18px;
+  }
+}
+
+
+/* ===== AREA セクション ===== */
+.area-sec {
+  background: var(--paper-warm);
+  padding: 60px 0;
+  position: relative;
+  color: var(--ink);
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+}
+.area-sec::before {
+  content: '+';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: var(--vermillion);
+  font-size: 22px;
+  font-weight: 800;
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+}
+.area-sec::after {
+  content: '+';
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  color: var(--vermillion);
+  font-size: 22px;
+  font-weight: 800;
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+}
+@media (min-width: 640px) {
+  .area-sec {
+    padding: 80px 0;
+  }
+}
+
+.area-header {
+  text-align: center;
+  max-width: var(--container);
+  margin: 0 auto 36px;
+  padding: 0 var(--gutter);
+}
+.area-header .dim-line {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.32em;
+  color: var(--vermillion);
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.area-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+@media (min-width: 640px) {
+  .area-title {
+    font-size: 48px;
+  }
+}
+.area-sub {
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 1.85;
+}
+@media (min-width: 640px) {
+  .area-sub {
+    font-size: 18px;
+  }
+}
+
+
+/* ===== AREA 地図ブロック ===== */
+.area-map {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  padding: 20px var(--gutter);
+  position: relative;
+}
+.area-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(4px 4px 0 rgba(10, 31, 61, 0.15));
+  transition: transform .4s ease;
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .area-map:hover .area-map-svg {
+    transform: scale(1.02);
+  }
+}
+
+.area-pref {
+  cursor: default;
+  transition: opacity .3s ease;
+}
+.area-pref:hover {
+  opacity: 1 !important;
+}
+.area-pref path {
+  transition: fill .3s ease;
+}
+.area-pref:hover path {
+  fill: var(--vermillion-d);
+}
+
+.area-map-label {
+  fill: var(--paper);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+.area-map-label-sm {
+  fill: var(--paper);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+.area-map-label-xs {
+  fill: var(--paper);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+  pointer-events: none;
+}
+.area-map-label-out {
+  fill: var(--text-mute);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* 方位マーク */
+.area-compass-n {
+  fill: var(--ink);
+  font-family: 'Dela Gothic One', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* エリアリスト */
+.area-list {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .area-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+}
+
+.area-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 12px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  transition: background .3s ease, transform .3s ease;
+  text-align: center;
+}
+.area-item:hover {
+  background: var(--mustard);
+  transform: translateY(-2px);
+}
+
+.area-marker {
+  color: var(--vermillion);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.area-name {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+.area-name small {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-sub);
+  margin-top: 2px;
+  letter-spacing: 0;
+}
+@media (min-width: 640px) {
+  .area-name {
+    font-size: 17px;
+  }
+  .area-name small {
+    font-size: 12px;
+  }
+}
+
+.area-note {
+  max-width: 700px;
+  margin: 30px auto 0;
+  padding: 0 var(--gutter);
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.85;
+}
+
+
+/* ===== フッター対応エリア ===== */
+.footer-area {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 24px var(--gutter) 0;
+  text-align: center;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+  color: rgba(242, 237, 224, 0.85);
+  letter-spacing: 0.05em;
+  border-top: 1px solid rgba(242, 237, 224, 0.15);
+  margin-top: 24px;
+}
+@media (min-width: 640px) {
+  .footer-area {
+    font-size: 15px;
   }
 }

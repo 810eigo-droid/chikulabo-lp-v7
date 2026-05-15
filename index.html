@@ -741,6 +741,183 @@
 
 
 <!-- =====================================================
+     ★ Section 07.5 ／ WORKS & VOICE ＝ 導入実績・お客様の声
+     ・現状は中身ダミー、後から差し替え可能
+     ===================================================== -->
+<section class="works-voice-sec">
+  <div class="container">
+
+    <div class="wv-header reveal">
+      <div class="dim-line">WORKS &amp; VOICE</div>
+      <div class="num">0<span class="v">7</span></div>
+      <h2 class="title">
+        導入実績と、<br>
+        <span class="v">お客様の声</span>。
+      </h2>
+      <p class="sub">
+        信頼の積み重ねを、これからここに。
+      </p>
+    </div>
+
+    <div class="wv-grid">
+      <!-- 導入実績 -->
+      <div class="wv-card reveal">
+        <div class="wv-card-label">WORKS</div>
+        <h3 class="wv-card-title">導入実績</h3>
+        <div class="wv-placeholder">
+          <div class="ph-item">
+            <div class="ph-image"></div>
+            <div class="ph-text">
+              <div class="ph-line"></div>
+              <div class="ph-line short"></div>
+            </div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-image"></div>
+            <div class="ph-text">
+              <div class="ph-line"></div>
+              <div class="ph-line short"></div>
+            </div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-image"></div>
+            <div class="ph-text">
+              <div class="ph-line"></div>
+              <div class="ph-line short"></div>
+            </div>
+          </div>
+        </div>
+        <div class="wv-coming">COMING SOON</div>
+      </div>
+
+      <!-- お客様の声 -->
+      <div class="wv-card reveal">
+        <div class="wv-card-label">VOICE</div>
+        <h3 class="wv-card-title">お客様の声</h3>
+        <div class="wv-placeholder">
+          <div class="ph-quote">
+            <div class="ph-line"></div>
+            <div class="ph-line"></div>
+            <div class="ph-line short"></div>
+            <div class="ph-author"></div>
+          </div>
+          <div class="ph-quote">
+            <div class="ph-line"></div>
+            <div class="ph-line"></div>
+            <div class="ph-line short"></div>
+            <div class="ph-author"></div>
+          </div>
+        </div>
+        <div class="wv-coming">COMING SOON</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     ★ Section 07.6 ／ AREA ＝ 対応エリア
+     ===================================================== -->
+<section class="area-sec">
+  <div class="container">
+
+    <div class="area-header reveal">
+      <div class="dim-line">SERVICE AREA</div>
+      <h2 class="area-title">
+        対応エリア。
+      </h2>
+      <p class="area-sub">
+        東海3県＋静岡県西部を中心に対応しております。
+      </p>
+    </div>
+
+    <!-- 地図ブロック表示 -->
+    <div class="area-map reveal">
+      <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" class="area-map-svg" aria-label="対応エリア地図">
+        <!-- 背景の薄いグリッド -->
+        <defs>
+          <pattern id="areaGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(10,31,61,0.06)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="600" height="380" fill="url(#areaGrid)" />
+
+        <!-- 岐阜県（北・大きい） -->
+        <g class="area-pref">
+          <path d="M 140,40 L 380,40 L 400,80 L 420,150 L 380,170 L 320,180 L 280,170 L 240,180 L 200,170 L 160,150 L 130,100 Z" 
+                fill="var(--vermillion)" stroke="var(--ink)" stroke-width="3" opacity="0.92"/>
+          <text x="275" y="115" text-anchor="middle" class="area-map-label">岐阜県</text>
+        </g>
+
+        <!-- 三重県（南西・縦長） -->
+        <g class="area-pref">
+          <path d="M 100,180 L 200,170 L 210,220 L 200,280 L 190,330 L 150,340 L 110,320 L 90,260 L 95,210 Z" 
+                fill="var(--vermillion)" stroke="var(--ink)" stroke-width="3" opacity="0.92"/>
+          <text x="150" y="255" text-anchor="middle" class="area-map-label">三重県</text>
+        </g>
+
+        <!-- 愛知県（中央南） -->
+        <g class="area-pref">
+          <path d="M 210,180 L 320,180 L 340,210 L 340,260 L 320,290 L 290,310 L 240,300 L 220,280 L 210,220 Z" 
+                fill="var(--vermillion)" stroke="var(--ink)" stroke-width="3" opacity="0.92"/>
+          <text x="275" y="245" text-anchor="middle" class="area-map-label">愛知県</text>
+        </g>
+
+        <!-- 静岡県（東南・浜松西部のみ） -->
+        <g class="area-pref">
+          <path d="M 340,210 L 460,210 L 470,260 L 440,290 L 380,295 L 340,260 Z" 
+                fill="var(--vermillion)" stroke="var(--ink)" stroke-width="3" opacity="0.92"/>
+          <text x="405" y="250" text-anchor="middle" class="area-map-label-sm">静岡県</text>
+          <text x="405" y="270" text-anchor="middle" class="area-map-label-xs">（浜松以西）</text>
+        </g>
+
+        <!-- 静岡県（東部・対応外をグレーで） -->
+        <g class="area-pref-out">
+          <path d="M 470,210 L 560,210 L 570,250 L 540,280 L 480,275 L 470,260 Z" 
+                fill="rgba(10,31,61,0.15)" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 4"/>
+          <text x="520" y="248" text-anchor="middle" class="area-map-label-out">対応外</text>
+        </g>
+
+        <!-- 装飾：方位マーク -->
+        <g class="area-compass">
+          <circle cx="540" cy="60" r="22" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+          <text x="540" y="55" text-anchor="middle" class="area-compass-n">N</text>
+          <line x1="540" y1="42" x2="540" y2="80" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="522" y1="60" x2="558" y2="60" stroke="var(--ink)" stroke-width="1.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- エリア4県リスト -->
+    <div class="area-list reveal">
+      <div class="area-item">
+        <span class="area-marker">✱</span>
+        <span class="area-name">岐阜県</span>
+      </div>
+      <div class="area-item">
+        <span class="area-marker">✱</span>
+        <span class="area-name">愛知県</span>
+      </div>
+      <div class="area-item">
+        <span class="area-marker">✱</span>
+        <span class="area-name">三重県</span>
+      </div>
+      <div class="area-item">
+        <span class="area-marker">✱</span>
+        <span class="area-name">静岡県<small>（浜松市より西部）</small></span>
+      </div>
+    </div>
+
+    <div class="area-note reveal">
+      ※ 上記エリア外についても、内容によりご相談承ります。お気軽にお問合せください。
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
      ★ Section 08 ／ CONTACT ＝ お問合せ
      ───────────────────────────────────────
      ※ フォームは現状「mailto:方式」で動作。
@@ -760,14 +937,9 @@
       </p>
     </div>
 
-    <!-- 連絡方法 3カラム -->
+    <!-- 連絡方法 2カラム -->
 <div id="contact-options"></div>
 <div class="contact-methods reveal">
-      <!--<div class="cm">
-        <div class="cm-latin">01 ／ CALL</div>
-        <div class="cm-name">お電話</div>
-        <div class="cm-sub">000-0000-0000<br>MON-FRI 9:00-18:00</div>
-      </div>-->
       <div class="cm">
         <div class="cm-latin">01 ／ EMAIL</div>
         <div class="cm-name">メール</div>
@@ -871,6 +1043,9 @@
         <li>MON-FRI 9:00-18:00</li>
       </ul>
     </div>
+  </div>
+  <div class="footer-area">
+    対応エリア：岐阜県 ／ 愛知県 ／ 三重県 ／ 静岡県（浜松市より西部）
   </div>
   <div class="footer-bottom">
     <div>© 2026 CHIKUDEN LABO. ALL RIGHTS RESERVED.</div>
